@@ -1,49 +1,32 @@
-import { useEffect, useRef } from "react";
 import "./styles/TechStack.css";
+import { FaPython, FaDatabase, FaHtml5, FaCss3Alt, FaJsSquare, FaJava, FaShopify, FaGithub, FaFileExcel } from "react-icons/fa";
+import { SiR, SiPandas, SiNumpy, SiPowerbi, SiMongodb, SiSqlite, SiTensorflow, SiFlask } from "react-icons/si";
+import { MdOutlineAutoFixHigh, MdOutlineSettingsSuggest, MdSpaceDashboard } from "react-icons/md";
 
 const skills = [
-  { name: "Python", icon: "🐍" },
-  { name: "R", icon: "📊" },
-  { name: "Pandas", icon: "🐼" },
-  { name: "NumPy", icon: "🔢" },
-  { name: "SQL", icon: "🗄️" },
-  { name: "Power BI", icon: "📈" },
-  { name: "Excel", icon: "📑" },
-  { name: "MongoDB", icon: "🍃" },
-  { name: "HTML", icon: "🌐" },
-  { name: "CSS", icon: "🎨" },
-  { name: "JavaScript", icon: "⚡" },
-  { name: "Java", icon: "☕" },
-  { name: "React", icon: "⚛️" },
-  { name: "Shopify", icon: "🛒" },
-  { name: "GitHub", icon: "⚙️" },
-  { name: "TensorFlow", icon: "🤖" },
-  { name: "Flask", icon: "🔥" },
-  { name: "n8n", icon: "🔗" },
-  { name: "Model Development", icon: "🧠" },
+  { name: "Python", icon: <FaPython /> },
+  { name: "R", icon: <SiR /> },
+  { name: "Pandas", icon: <SiPandas /> },
+  { name: "NumPy", icon: <SiNumpy /> },
+  { name: "SQL", icon: <FaDatabase /> },
+  { name: "Power BI", icon: <SiPowerbi /> },
+  { name: "Excel", icon: <FaFileExcel /> },
+  { name: "MongoDB", icon: <SiMongodb /> },
+  { name: "SQLite", icon: <SiSqlite /> },
+  { name: "HTML", icon: <FaHtml5 /> },
+  { name: "CSS", icon: <FaCss3Alt /> },
+  { name: "JavaScript", icon: <FaJsSquare /> },
+  { name: "Java", icon: <FaJava /> },
+  { name: "Shopify", icon: <FaShopify /> },
+  { name: "GitHub", icon: <FaGithub /> },
+  { name: "TensorFlow", icon: <SiTensorflow /> },
+  { name: "Flask", icon: <SiFlask /> },
+  { name: "Data Cleaning", icon: <MdOutlineAutoFixHigh /> },
+  { name: "Data Preprocessing", icon: <MdOutlineSettingsSuggest /> },
+  { name: "Dashboard Development", icon: <MdSpaceDashboard /> },
 ];
 
 const TechStack = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    let scrollAmount = 0;
-    const scroll = () => {
-      scrollAmount += 2;
-      if (scrollAmount >= scrollContainer.scrollWidth / 2) {
-        scrollAmount = 0;
-      }
-      scrollContainer.style.transform = `translateX(-${scrollAmount}px)`;
-      requestAnimationFrame(scroll);
-    };
-
-    const animation = requestAnimationFrame(scroll);
-    return () => cancelAnimationFrame(animation);
-  }, []);
-
   return (
     <div className="tech-stack-section" id="skills">
       <div className="skills-container section-container">
@@ -51,10 +34,10 @@ const TechStack = () => {
           My <span>Tech Stack</span>
         </h2>
         <div className="skills-wrapper">
-          <div className="skills-flex" ref={scrollRef}>
-            {[...skills, ...skills].map((skill, index) => (
+          <div className="skills-grid">
+            {skills.map((skill, index) => (
               <div className="skill-item" key={index}>
-                <div className="skill-icon-emoji">{skill.icon}</div>
+                <div className="skill-icon">{skill.icon}</div>
                 <div className="skill-name">{skill.name}</div>
               </div>
             ))}

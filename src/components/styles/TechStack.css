@@ -37,89 +37,91 @@
 
 .skills-wrapper {
   width: 100%;
-  overflow: hidden;
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
 }
 
-.skills-flex {
-  display: flex;
-  gap: 30px;
-  width: fit-content;
-  will-change: transform;
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 25px;
+  width: 100%;
 }
 
 .skill-item {
-  min-width: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 15px;
-  padding: 30px 20px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  padding: 25px 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(5px);
 }
 
 .skill-item:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: var(--accentColor);
-  transform: translateY(-8px);
-  box-shadow: 0 8px 30px rgba(127, 64, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
-.skill-icon-emoji {
-  font-size: 2.5rem;
+.skill-icon {
+  font-size: 2.8rem;
+  color: #adacac;
   line-height: 1;
-  width: 70px;
-  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: none;
-  border-radius: 50%;
-  box-shadow: none;
-  border: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.skill-item:hover .skill-icon {
+  color: #ffffff;
+  transform: scale(1.05);
 }
 
 .skill-name {
-  font-size: 1rem;
-  font-weight: 600;
-  color: white;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #e0e0e0;
   text-align: center;
   letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.skill-item:hover .skill-name {
+  color: #ffffff;
 }
 
 @media only screen and (max-width: 1024px) {
   .tech-stack-section {
-    padding: 50px 20px;
+    padding: 60px 20px;
   }
 
   .skills-container h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 15px;
   }
 
   .skill-item {
-    min-width: 120px;
-    padding: 20px 15px;
+    padding: 20px 10px;
+    gap: 10px;
   }
 
-  .skill-icon-emoji {
-    font-size: 1.8rem;
-    width: 50px;
-    height: 50px;
+  .skill-icon {
+    font-size: 2.2rem;
   }
 
   .skill-name {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 }

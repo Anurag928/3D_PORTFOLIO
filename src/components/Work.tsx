@@ -1,20 +1,33 @@
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+interface Project {
+  id: number;
+  name: string;
+  category: string;
+  tools: string;
+  image: string;
+  description: React.ReactNode | string;
+  url: string;
+  demoUrl?: string;
+  dashboardUrl?: string;
+  demoNotes?: string[];
+}
 
-gsap.registerPlugin(useGSAP);
-
-const projects = [
+const projects: Project[] = [
   {
     id: 1,
-    name: "Bank Customer Churn Prediction",
+    name: "Bank Customer Churn Prediction System",
     category: "ML & Web App",
-    tools: "Python, Flask, Power BI, SQLite, XGBoost",
+    tools: "Python • Flask • JavaScript • MongoDB • Power BI • TensorFlow • XGBoost • Pandas • HTML • CSS • SMTP",
     image: "https://miro.medium.com/v2/resize:fit:800/1*3xEPKteLmsRwSUK6bfbpFQ.jpeg",
-    description: "Developed a machine learning-based web application to predict customer churn using the XGBoost algorithm. Performed data preprocessing and feature engineering using Python (pandas, NumPy) to improve model accuracy. Built a Flask backend with a responsive frontend and integrated SQLite for storing user and prediction data. Designed an interactive Power BI dashboard to visualize churn trends and key influencing factors.",
-    url: "https://github.com/Anurag928/Bank-Customer-Churn",
+    description: "Built a SaaS-style Bank Customer Churn Prediction platform that helps banks identify customers at risk of leaving using Machine Learning and real-time analytics. Developed role-based workflows for Employees, Analysts, and Admins with secure authentication and data management. Integrated Power BI dashboards to visualize churn trends, customer behavior, product usage, and business insights. Built using Python, Flask, MongoDB, JavaScript, XGBoost, TensorFlow, Pandas, HTML, CSS, and SMTP services for churn prediction.",
+    url: "https://bank-customer-churn-4.onrender.com/",
+    demoUrl: "https://bank-customer-churn-4.onrender.com/",
+    dashboardUrl: "https://drive.google.com/file/d/1jhd4aUZPXrUiM7d7WCrwR1OC0aKlY_zE/view?usp=sharing",
+    demoNotes: [
+      "Initial load may take a few seconds due to Render free-tier server startup.",
+      "If an Internal Server Error appears after signup/login, please wait a few minutes and try logging in again using your credentials, as the free-tier server may temporarily sleep due to memory limitations."
+    ]
   },
   {
     id: 2,
@@ -55,40 +68,6 @@ const projects = [
 ];
 
 const Work = () => {
-  useGSAP(() => {
-    let translateX: number = 0;
-    function setTranslateX() {
-      const box = document.getElementsByClassName("work-box");
-      const rectLeft = document
-        .querySelector(".work-container")!
-        .getBoundingClientRect().left;
-      const rect = box[0].getBoundingClientRect();
-      const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
-      let padding: number =
-        parseInt(window.getComputedStyle(box[0]).padding) / 2;
-      translateX = rect.width * box.length - (rectLeft + parentWidth) + padding;
-    }
-
-    setTranslateX();
-
-    let timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".work-section",
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-        pin: true,
-        pinType: !ScrollTrigger.isTouch ? "transform" : "fixed",
-        id: "work",
-      },
-    });
-
-    timeline.to(".work-flex", {
-      x: -translateX,
-      duration: 40,
-      delay: 0.2,
-    });
-  }, []);
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">
@@ -110,9 +89,18 @@ const Work = () => {
                 <h4>Tools and features</h4>
                 <p>{project.tools}</p>
                 <h4>Description</h4>
-                <p>{project.description}</p>
+                <div style={{ marginTop: "3px" }}>
+                  {typeof project.description === "string" ? <p>{project.description}</p> : project.description}
+                </div>
               </div>
-              <WorkImage image={project.image} alt={project.name} link={project.url} />
+              <WorkImage
+                image={project.image}
+                alt={project.name}
+                link={project.demoUrl || project.url}
+                linkLabel={project.demoUrl ? "Live Preview ↗" : undefined}
+                dashboardUrl={project.dashboardUrl}
+                notes={project.demoNotes}
+              />
             </div>
           ))}
         </div>

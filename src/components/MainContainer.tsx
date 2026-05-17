@@ -1,4 +1,4 @@
-import { lazy, PropsWithChildren, Suspense, useEffect, useState } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 import About from "./About";
 import Career from "./Career";
 import Contact from "./Contact";
@@ -8,6 +8,7 @@ import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
+import Leadership from "./Leadership";
 import TechStack from "./TechStack";
 import Achievements from "./Achievements";
 import Certifications from "./Certifications";
@@ -45,6 +46,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
             <Career />
             <TechStack />
             <Work />
+            <Leadership />
             <Achievements />
             <Certifications />
             <Contact />
