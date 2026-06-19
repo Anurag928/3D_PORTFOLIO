@@ -16,6 +16,16 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
+    name: "HireReady AI",
+    category: "AI & Web App",
+    tools: "Python • Flask • Generative AI • MongoDB • Firebase • HTML • CSS • JavaScript",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiEAbwVBhL3yV1uUma2Ssq0sukpjPaWNn1Wio-xshN9A&s=10",
+    description: "HireReady AI is an AI-powered career development platform designed to help students and professionals plan and achieve their career goals through personalized guidance. It leverages Generative AI to create customized career roadmaps, analyze resumes, identify skill gaps, and recommend relevant learning paths. The platform provides an interactive dashboard for tracking progress, managing career plans, and exporting personalized reports. With integrated authentication, database management, and AI-driven recommendations, HireReady AI simplifies career planning and skill development.",
+    url: "https://hire-ready-orcin.vercel.app/",
+    demoUrl: "https://hire-ready-orcin.vercel.app/",
+  },
+  {
+    id: 2,
     name: "Bank Customer Churn Prediction System",
     category: "ML & Web App",
     tools: "Python • Flask • JavaScript • MongoDB • Power BI • TensorFlow • XGBoost • Pandas • HTML • CSS • SMTP",
@@ -30,7 +40,7 @@ const projects: Project[] = [
     ]
   },
   {
-    id: 2,
+    id: 3,
     name: "Deepfake Detection Web Application",
     category: "Deep Learning",
     tools: "Python, TensorFlow, Flask, HTML, CSS",
@@ -39,7 +49,7 @@ const projects: Project[] = [
     url: "https://github.com/Ashutosh3678/Deepfake-Detection",
   },
   {
-    id: 3,
+    id: 4,
     name: "Indian Election Data Analysis Dashboard",
     category: "Data Visualization",
     tools: "Power BI, DAX, Power Query",
@@ -48,7 +58,7 @@ const projects: Project[] = [
     url: "https://app.powerbi.com/groups/me/reports/6c7c534e-791b-4761-8c3b-0b3b8d840974/ReportSection4a1312041e35e08232de?experience=power-bi",
   },
   {
-    id: 4,
+    id: 5,
     name: "E-Commerce Sales Dashboard",
     category: "Business Analytics",
     tools: "Power BI, Excel, DAX",
@@ -57,7 +67,7 @@ const projects: Project[] = [
     url: "https://app.powerbi.com/reportEmbed?reportId=60c909d6-7c34-4495-8c0a-41458f9d47d4&autoAuth=true&ctid=d27bd8bc-15b3-4ea8-936e-8724ac9363a7",
   },
   {
-    id: 5,
+    id: 6,
     name: "College Webpage",
     category: "Web Development",
     tools: "HTML, CSS, Responsive Design",
